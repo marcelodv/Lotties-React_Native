@@ -1,28 +1,37 @@
 import React from 'react';
 import { SafeAreaView} from 'react-native';
 import Lottie from 'lottie-react-native'
-import { StyleSheet, View, Button, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity, Image, StatusBar } from 'react-native'
 
 import pizza from './pizza.json'
+import logo from './assets/logo.png'
 
 const TestLottie = () => {
-  return <SafeAreaView style={[styles.container]}>
+  return <>
+    <StatusBar backgroundColor="white" barStyle='dark-content'/>
+    <SafeAreaView style={[styles.container]}>
 
-    <Lottie style={[styles.lottie]} resizeMode="contain" autoSize source={pizza} autoPlay loop />
+      <Image style={[styles.logo]} resizeMode="contain" autoSize source={logo}/>
+      {/* Animação Lottie */}
+      <Lottie style={[styles.lottie]} resizeMode="contain" autoSize source={pizza} autoPlay loop />
 
-    <View style={[styles.buttons]}>
+      {/* Container Buttons */}
+      <View style={[styles.buttons]}>
 
-        <TouchableOpacity style={[styles.btnLogin]}>
-          <Text style={[styles.loginText]}>Login</Text>
-        </TouchableOpacity>
+          {/* Botão Login */}
+          <TouchableOpacity style={[styles.btnLogin]}>
+            <Text style={[styles.loginText]}>ENTRAR</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.btnSingUp]}>
-          <Text style={[styles.singupText]}>Sing Up</Text>
-        </TouchableOpacity>
+          {/* Botão Sing Up */}
+          <TouchableOpacity style={[styles.btnSingUp]}>
+            <Text style={[styles.singupText]}>CADASTRAR</Text>
+          </TouchableOpacity>
 
-    </View>
+      </View>
 
-  </SafeAreaView>
+    </SafeAreaView>
+  </>
 }
 
 const styles = StyleSheet.create({
@@ -44,14 +53,14 @@ const styles = StyleSheet.create({
   buttons: {
     padding: 0,
     width: 250,
-    height: 200,
+    height: 170,
     flexDirection: 'column', 
     justifyContent: 'space-evenly',
   },
   btnLogin: { 
     width: "100%",
     height: 60,
-    backgroundColor: "orange",
+    backgroundColor: "#FF9933",
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -69,14 +78,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
-    borderColor: 'orange',
-    borderWidth: 4,
+    borderColor: '#FF9933',
+    borderWidth: 3,
 
   },
   singupText: {
     color: 'orange',
     fontSize: 25,
     fontWeight: 'bold'
+  },
+  logo: {
+    width: 300,
   }
 })
 
